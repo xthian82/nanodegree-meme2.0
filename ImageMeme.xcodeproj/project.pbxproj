@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C479D13523C22B1C0099E071 /* BottomDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C479D13423C22B1C0099E071 /* BottomDelegate.swift */; };
-		C479D13723C22ED10099E071 /* TopDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C479D13623C22ED10099E071 /* TopDelegate.swift */; };
 		C479D13923C2505F0099E071 /* TextFieldDelegator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C479D13823C2505F0099E071 /* TextFieldDelegator.swift */; };
 		C4F7E6CA23C1183900F5A935 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F7E6C923C1183900F5A935 /* AppDelegate.swift */; };
 		C4F7E6CC23C1183900F5A935 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F7E6CB23C1183900F5A935 /* SceneDelegate.swift */; };
@@ -38,8 +36,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		C479D13423C22B1C0099E071 /* BottomDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomDelegate.swift; sourceTree = "<group>"; };
-		C479D13623C22ED10099E071 /* TopDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopDelegate.swift; sourceTree = "<group>"; };
 		C479D13823C2505F0099E071 /* TextFieldDelegator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldDelegator.swift; sourceTree = "<group>"; };
 		C4F7E6C623C1183900F5A935 /* MemeV1.0.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MemeV1.0.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4F7E6C923C1183900F5A935 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -112,8 +108,6 @@
 				C4F7E6D223C1183900F5A935 /* Assets.xcassets */,
 				C4F7E6D423C1183900F5A935 /* LaunchScreen.storyboard */,
 				C4F7E6D723C1183900F5A935 /* Info.plist */,
-				C479D13423C22B1C0099E071 /* BottomDelegate.swift */,
-				C479D13623C22ED10099E071 /* TopDelegate.swift */,
 				C479D13823C2505F0099E071 /* TextFieldDelegator.swift */,
 			);
 			path = ImageMeme;
@@ -269,11 +263,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				C4F7E6CE23C1183900F5A935 /* ViewController.swift in Sources */,
-				C479D13723C22ED10099E071 /* TopDelegate.swift in Sources */,
 				C4F7E6CA23C1183900F5A935 /* AppDelegate.swift in Sources */,
 				C479D13923C2505F0099E071 /* TextFieldDelegator.swift in Sources */,
 				C4F7E6CC23C1183900F5A935 /* SceneDelegate.swift in Sources */,
-				C479D13523C22B1C0099E071 /* BottomDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

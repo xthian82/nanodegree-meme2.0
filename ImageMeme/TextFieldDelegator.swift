@@ -21,10 +21,12 @@ class TextFieldDelegator: NSObject, UITextFieldDelegate {
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         textField.text = ""
+        moveUpView = moveUpKeyboard ? 1 : 0
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         setupInitialText(textField)
+        moveUpView = moveUpKeyboard ? 1 : 0
     }
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
