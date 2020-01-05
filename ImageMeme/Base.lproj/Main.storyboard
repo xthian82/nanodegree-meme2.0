@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -9,16 +10,78 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="ImageMeme" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" ambiguous="YES" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <imageView autoresizesSubviews="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" preservesSuperviewLayoutMargins="YES" highlighted="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8mV-L9-ePt">
+                                <rect key="frame" x="8" y="52" width="398" height="778"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="8mV-L9-ePt" secondAttribute="height" multiplier="1:1" id="cSC-T8-5qT"/>
+                                </constraints>
+                                <viewLayoutGuide key="safeArea" id="7ZY-Vy-gDE"/>
+                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default" weight="thin"/>
+                            </imageView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Jlr-cJ-zcc">
+                                <rect key="frame" x="8" y="810" width="398" height="44"/>
+                                <items>
+                                    <barButtonItem title="Pick" id="7d8-vq-T7F">
+                                        <connections>
+                                            <action selector="pickAnImage:" destination="BYZ-38-t0r" id="XHJ-6S-8J1"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem title="Camera" id="I7T-ZH-QBB">
+                                        <connections>
+                                            <action selector="pickAnImageFromCamera:" destination="BYZ-38-t0r" id="Z6A-Zw-ZHK"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                            <textField opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="TOP" textAlignment="center" adjustsFontForContentSizeCategory="YES" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="W5N-jF-Xf8">
+                                <rect key="frame" x="85" y="92" width="97" height="34"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="BOTTOM" textAlignment="center" adjustsFontForContentSizeCategory="YES" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="afV-vt-S8I">
+                                <rect key="frame" x="111" y="744" width="97" height="34"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="Jlr-cJ-zcc" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" constant="-8" id="2T2-GW-xr9"/>
+                            <constraint firstItem="W5N-jF-Xf8" firstAttribute="top" secondItem="8mV-L9-ePt" secondAttribute="top" constant="16" id="9HL-h6-NXA"/>
+                            <constraint firstItem="8mV-L9-ePt" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="8" id="A5D-mE-Tbx"/>
+                            <constraint firstItem="afV-vt-S8I" firstAttribute="trailing" secondItem="8mV-L9-ePt" secondAttribute="trailing" constant="-16" id="Cc4-0Q-ViP"/>
+                            <constraint firstItem="8mV-L9-ePt" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" constant="-8" id="LlN-fi-9rt"/>
+                            <constraint firstItem="W5N-jF-Xf8" firstAttribute="leading" secondItem="8mV-L9-ePt" secondAttribute="leading" constant="16" id="Xp5-Xn-i0u"/>
+                            <constraint firstItem="W5N-jF-Xf8" firstAttribute="trailing" secondItem="8mV-L9-ePt" secondAttribute="trailing" constant="-16" id="YVc-2z-X3n"/>
+                            <constraint firstItem="afV-vt-S8I" firstAttribute="leading" secondItem="8mV-L9-ePt" secondAttribute="leading" constant="16" id="aw0-8L-Hk2"/>
+                            <constraint firstItem="Jlr-cJ-zcc" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" constant="-8" id="jJI-Ff-Ndn"/>
+                            <constraint firstItem="afV-vt-S8I" firstAttribute="bottom" secondItem="8mV-L9-ePt" secondAttribute="bottom" constant="-32" id="jSQ-O5-eyp"/>
+                            <constraint firstItem="Jlr-cJ-zcc" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="8" id="tMN-ho-6oA"/>
+                            <constraint firstItem="8mV-L9-ePt" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" constant="-32" id="uHm-1u-OPF"/>
+                            <constraint firstItem="8mV-L9-ePt" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="8" id="znG-NY-22Y"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="bottomTextField" destination="afV-vt-S8I" id="oeD-7S-L6S"/>
+                        <outlet property="imagePickerView" destination="8mV-L9-ePt" id="jMq-ji-jdJ"/>
+                        <outlet property="toolBarView" destination="Jlr-cJ-zcc" id="pJ2-X8-2V6"/>
+                        <outlet property="topTextField" destination="W5N-jF-Xf8" id="Sga-cm-TYF"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="137.68115942028987" y="114.50892857142857"/>
         </scene>
     </scenes>
 </document>
