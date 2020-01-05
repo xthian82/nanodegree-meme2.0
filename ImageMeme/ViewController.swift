@@ -23,6 +23,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var bottomTextField: UITextField!
     @IBOutlet weak var toolBarView: UIToolbar!
     @IBOutlet weak var cameraButton: UIBarButtonItem!
+    @IBOutlet weak var shareButton: UIBarButtonItem!
+    @IBOutlet weak var cancelShare: UIBarButtonItem!
     
     let memeTextAttributes: [NSAttributedString.Key: Any] = [
         NSAttributedString.Key.strokeColor: UIColor.white,
@@ -42,6 +44,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 
         setUpTextField(topTextField!, delegate: topDelegate)
         setUpTextField(bottomTextField!, delegate: bottomDelegate)
+        setupTopBar(enabled: false)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -70,6 +73,13 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         self.present(controller, animated: true, completion: nil)
     }
     
+    @IBAction func cancelTopBarButton() {
+        bottomTextField.text = "BOTTOM"
+        topTextField.text = "TOP"
+        imagePickerView.image = nil
+        shareButton.isEnabled = false
+    }
+    
     //MARK: Library functions
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
@@ -83,6 +93,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                 fatalError("Expected a dictionary containing an image, but was provided the following: \(info)")
         }
         imagePickerView.image = selectedImage
+        setupTopBar(enabled: true)
         dismiss(animated: true, completion: nil)
     }
 
@@ -153,6 +164,11 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         imagePickerController.sourceType = sourceType
         imagePickerController.delegate = self
         present(imagePickerController, animated: true, completion: nil)
+    }
+    
+    private func setupTopBar(enabled: Bool) {
+        shareButton.isEnabled = enabled
+        cancelShare.isEnabled = enabled
     }
 }
 
