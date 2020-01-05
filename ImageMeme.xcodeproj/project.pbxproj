@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		C479D13523C22B1C0099E071 /* BottomDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C479D13423C22B1C0099E071 /* BottomDelegate.swift */; };
 		C479D13723C22ED10099E071 /* TopDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C479D13623C22ED10099E071 /* TopDelegate.swift */; };
+		C479D13923C2505F0099E071 /* TextFieldDelegator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C479D13823C2505F0099E071 /* TextFieldDelegator.swift */; };
 		C4F7E6CA23C1183900F5A935 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F7E6C923C1183900F5A935 /* AppDelegate.swift */; };
 		C4F7E6CC23C1183900F5A935 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F7E6CB23C1183900F5A935 /* SceneDelegate.swift */; };
 		C4F7E6CE23C1183900F5A935 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F7E6CD23C1183900F5A935 /* ViewController.swift */; };
@@ -39,7 +40,8 @@
 /* Begin PBXFileReference section */
 		C479D13423C22B1C0099E071 /* BottomDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomDelegate.swift; sourceTree = "<group>"; };
 		C479D13623C22ED10099E071 /* TopDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopDelegate.swift; sourceTree = "<group>"; };
-		C4F7E6C623C1183900F5A935 /* ImageMeme.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ImageMeme.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C479D13823C2505F0099E071 /* TextFieldDelegator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldDelegator.swift; sourceTree = "<group>"; };
+		C4F7E6C623C1183900F5A935 /* MemeV1.0.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MemeV1.0.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4F7E6C923C1183900F5A935 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C4F7E6CB23C1183900F5A935 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		C4F7E6CD23C1183900F5A935 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -93,7 +95,7 @@
 		C4F7E6C723C1183900F5A935 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				C4F7E6C623C1183900F5A935 /* ImageMeme.app */,
+				C4F7E6C623C1183900F5A935 /* MemeV1.0.app */,
 				C4F7E6DC23C1183A00F5A935 /* ImageMemeTests.xctest */,
 				C4F7E6E723C1183A00F5A935 /* ImageMemeUITests.xctest */,
 			);
@@ -112,6 +114,7 @@
 				C4F7E6D723C1183900F5A935 /* Info.plist */,
 				C479D13423C22B1C0099E071 /* BottomDelegate.swift */,
 				C479D13623C22ED10099E071 /* TopDelegate.swift */,
+				C479D13823C2505F0099E071 /* TextFieldDelegator.swift */,
 			);
 			path = ImageMeme;
 			sourceTree = "<group>";
@@ -151,7 +154,7 @@
 			);
 			name = ImageMeme;
 			productName = ImageMeme;
-			productReference = C4F7E6C623C1183900F5A935 /* ImageMeme.app */;
+			productReference = C4F7E6C623C1183900F5A935 /* MemeV1.0.app */;
 			productType = "com.apple.product-type.application";
 		};
 		C4F7E6DB23C1183A00F5A935 /* ImageMemeTests */ = {
@@ -268,6 +271,7 @@
 				C4F7E6CE23C1183900F5A935 /* ViewController.swift in Sources */,
 				C479D13723C22ED10099E071 /* TopDelegate.swift in Sources */,
 				C4F7E6CA23C1183900F5A935 /* AppDelegate.swift in Sources */,
+				C479D13923C2505F0099E071 /* TextFieldDelegator.swift in Sources */,
 				C4F7E6CC23C1183900F5A935 /* SceneDelegate.swift in Sources */,
 				C479D13523C22B1C0099E071 /* BottomDelegate.swift in Sources */,
 			);
@@ -450,7 +454,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = py.com.snowtech.TextFieldChallenge;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = MemeV1.0;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -468,7 +472,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = py.com.snowtech.TextFieldChallenge;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = MemeV1.0;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
