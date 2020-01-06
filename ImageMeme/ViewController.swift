@@ -32,7 +32,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     let memeTextAttributes: [NSAttributedString.Key: Any] = [
         NSAttributedString.Key.strokeColor: UIColor.white,
         NSAttributedString.Key.foregroundColor: UIColor.white,
-       // NSAttributedString.Key.font: UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
         NSAttributedString.Key.strokeWidth:  0.0
     ]
     
@@ -76,7 +75,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             controller.popoverPresentationController?.sourceView = self.view
             controller.popoverPresentationController?.permittedArrowDirections = UIPopoverArrowDirection(rawValue: 0)
         }
+        
         controller.completionWithItemsHandler = { (type, completed, items, error) in
+            // save object on success
             if completed {
                 self.save()
             }
@@ -131,19 +132,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
      func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
          dismiss(animated: true, completion: nil)
      }
-     
-     @objc func image(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
-         if let error = error {
-             // we got back an error!
-             let ac = UIAlertController(title: "Save error", message: error.localizedDescription, preferredStyle: .alert)
-             ac.addAction(UIAlertAction(title: "OK", style: .default))
-             present(ac, animated: true)
-         } else {
-             let ac = UIAlertController(title: "Saved!", message: "Your altered image has been saved to your photos.", preferredStyle: .alert)
-             ac.addAction(UIAlertAction(title: "OK", style: .default))
-             present(ac, animated: true)
-        }
-    }
 
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
@@ -168,7 +156,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         let meme = Meme(topText: topTextField.text!, bottomText: bottomTextField.text!, originalImage: imagePickerView.image!, memedImage: self.memmedImage)
         
         print("========> Calling Saving to save data to export later")
-        // UIImageWriteToSavedPhotosAlbum(meme.memedImage, self, #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)
     }
     
     func generateMemedImage() -> UIImage {
