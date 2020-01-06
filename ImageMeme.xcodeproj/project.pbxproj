@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		86B1179123C35CBD00802C5D /* MemeCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B1179023C35CBD00802C5D /* MemeCollectionViewController.swift */; };
+		86B1179323C35E8100802C5D /* Meme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B1179223C35E8100802C5D /* Meme.swift */; };
 		C4820E2823C2941100CE4388 /* ViewController+TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4820E2723C2941100CE4388 /* ViewController+TextField.swift */; };
 		C4820E2A23C2A86500CE4388 /* ButtonTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4820E2923C2A86500CE4388 /* ButtonTitle.swift */; };
 		C4F7E6CA23C1183900F5A935 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F7E6C923C1183900F5A935 /* AppDelegate.swift */; };
@@ -37,9 +39,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		86B1179023C35CBD00802C5D /* MemeCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemeCollectionViewController.swift; sourceTree = "<group>"; };
+		86B1179223C35E8100802C5D /* Meme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meme.swift; sourceTree = "<group>"; };
 		C4820E2723C2941100CE4388 /* ViewController+TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+TextField.swift"; sourceTree = "<group>"; };
 		C4820E2923C2A86500CE4388 /* ButtonTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonTitle.swift; sourceTree = "<group>"; };
-		C4F7E6C623C1183900F5A935 /* MemeV1.0.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MemeV1.0.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C4F7E6C623C1183900F5A935 /* MemeV2.0.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MemeV2.0.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4F7E6C923C1183900F5A935 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C4F7E6CB23C1183900F5A935 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		C4F7E6CD23C1183900F5A935 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -93,7 +97,7 @@
 		C4F7E6C723C1183900F5A935 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				C4F7E6C623C1183900F5A935 /* MemeV1.0.app */,
+				C4F7E6C623C1183900F5A935 /* MemeV2.0.app */,
 				C4F7E6DC23C1183A00F5A935 /* ImageMemeTests.xctest */,
 				C4F7E6E723C1183A00F5A935 /* ImageMemeUITests.xctest */,
 			);
@@ -112,6 +116,8 @@
 				C4F7E6D723C1183900F5A935 /* Info.plist */,
 				C4820E2723C2941100CE4388 /* ViewController+TextField.swift */,
 				C4820E2923C2A86500CE4388 /* ButtonTitle.swift */,
+				86B1179023C35CBD00802C5D /* MemeCollectionViewController.swift */,
+				86B1179223C35E8100802C5D /* Meme.swift */,
 			);
 			path = ImageMeme;
 			sourceTree = "<group>";
@@ -151,7 +157,7 @@
 			);
 			name = ImageMeme;
 			productName = ImageMeme;
-			productReference = C4F7E6C623C1183900F5A935 /* MemeV1.0.app */;
+			productReference = C4F7E6C623C1183900F5A935 /* MemeV2.0.app */;
 			productType = "com.apple.product-type.application";
 		};
 		C4F7E6DB23C1183A00F5A935 /* ImageMemeTests */ = {
@@ -267,8 +273,10 @@
 			files = (
 				C4820E2823C2941100CE4388 /* ViewController+TextField.swift in Sources */,
 				C4F7E6CE23C1183900F5A935 /* ViewController.swift in Sources */,
+				86B1179323C35E8100802C5D /* Meme.swift in Sources */,
 				C4F7E6CA23C1183900F5A935 /* AppDelegate.swift in Sources */,
 				C4820E2A23C2A86500CE4388 /* ButtonTitle.swift in Sources */,
+				86B1179123C35CBD00802C5D /* MemeCollectionViewController.swift in Sources */,
 				C4F7E6CC23C1183900F5A935 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -449,8 +457,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = py.com.snowtech.TextFieldChallenge;
-				PRODUCT_NAME = MemeV1.0;
+				PRODUCT_NAME = MemeV2.0;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -467,8 +476,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = py.com.snowtech.TextFieldChallenge;
-				PRODUCT_NAME = MemeV1.0;
+				PRODUCT_NAME = MemeV2.0;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
