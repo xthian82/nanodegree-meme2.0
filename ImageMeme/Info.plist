@@ -66,5 +66,9 @@
 	<string>We need to access pics</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
 	<string>We need to save pics</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Impact.TTF</string>
+	</array>
 </dict>
 </plist>

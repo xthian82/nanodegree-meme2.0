@@ -27,6 +27,7 @@
                             <toolbar opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFill" semanticContentAttribute="spatial" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Jlr-cJ-zcc">
                                 <rect key="frame" x="0.0" y="813" width="414" height="49"/>
                                 <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="CxN-4V-A5I"/>
                                     <barButtonItem image="camera.fill" catalog="system" width="1" style="plain" id="I7T-ZH-QBB" userLabel="Camera button">
                                         <connections>
                                             <action selector="pickAnImageFromCamera:" destination="BYZ-38-t0r" id="Z6A-Zw-ZHK"/>
@@ -37,6 +38,7 @@
                                             <action selector="pickAnImageFromLibrary:" destination="BYZ-38-t0r" id="11U-By-7tK"/>
                                         </connections>
                                     </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="tmR-pU-4JN"/>
                                 </items>
                             </toolbar>
                             <textField opaque="NO" contentMode="scaleAspectFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="W5N-jF-Xf8">
@@ -45,8 +47,8 @@
                                 <attributedString key="attributedText">
                                     <fragment content="TOP">
                                         <attributes>
-                                            <color key="NSColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <font key="NSFont" size="17" name="HelveticaNeue"/>
+                                            <color key="NSColor" red="0.99989169840000003" green="1" blue="0.99988096950000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <font key="NSFont" size="17" name="Impact"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                         </attributes>
                                     </fragment>
@@ -60,7 +62,7 @@
                                     <fragment content="BOTTOM">
                                         <attributes>
                                             <color key="NSColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <font key="NSFont" size="17" name="HelveticaNeue-Bold"/>
+                                            <font key="NSFont" size="17" name="Impact"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                         </attributes>
                                     </fragment>
@@ -75,6 +77,7 @@
                                             <action selector="shareButtonPressed" destination="BYZ-38-t0r" id="j8F-MK-q6M"/>
                                         </connections>
                                     </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="ERz-fd-HcC"/>
                                     <barButtonItem title="Cancel" width="42" style="plain" id="r3e-90-oQo" userLabel="CancelShare">
                                         <connections>
                                             <action selector="cancelTopBarButton" destination="BYZ-38-t0r" id="Acn-R2-DK7"/>

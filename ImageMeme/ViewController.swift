@@ -29,13 +29,14 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     var shouldMoveUpView = false
     var memmedImage: UIImage!
-
+/*
     let memeTextAttributes: [NSAttributedString.Key: Any] = [
         NSAttributedString.Key.strokeColor: UIColor.white,
         NSAttributedString.Key.foregroundColor: UIColor.white,
-        NSAttributedString.Key.font: UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
+       // NSAttributedString.Key.font: UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
+        //NSAttributedString.Key.font: UIFont(name: "Impact", size: 40)!,
         NSAttributedString.Key.strokeWidth:  0.0
-    ]
+    ]*/
     
     // MARK: Delegates
     override func viewDidLoad() {
@@ -191,7 +192,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     //MARK: Utilities
     private func setUpTextField(_ textField: UITextField, delegate: UITextFieldDelegate) {
         textField.delegate = delegate
-        textField.defaultTextAttributes = memeTextAttributes
+        //textField.defaultTextAttributes = memeTextAttributes
         textField.textAlignment = .center
     }
     
