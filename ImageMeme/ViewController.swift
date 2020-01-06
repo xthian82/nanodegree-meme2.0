@@ -36,7 +36,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         NSAttributedString.Key.font: UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
         NSAttributedString.Key.strokeWidth:  0.0
     ]
-
+    
     // MARK: Delegates
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -77,6 +77,12 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             controller.popoverPresentationController?.sourceView = self.view
             controller.popoverPresentationController?.permittedArrowDirections = UIPopoverArrowDirection(rawValue: 0)
         }
+        controller.completionWithItemsHandler = { (type, completed, items, error) in
+            if completed {
+                self.save()
+            }
+        }
+        
         self.present(controller, animated: true, completion: nil)
     }
     
@@ -141,12 +147,18 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
 
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
         // info dictionary may contain multiple representations of the image. You want
-        // to use the original
-        guard let selectedImage = info[UIImagePickerController.InfoKey.originalImage] as?
-            UIImage else {
-             fatalError("Expected a dictionary containing an image, but was provided the following: \(info)")
+        var selectedImage : UIImage!
+        
+        if let img = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
+            selectedImage = img // try to use the edited if any
+        } else if let img = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            selectedImage = img // try to use the original
+        } else { // error
+            fatalError("Expected a dictionary containing an image, but was provided the following: \(info)")
         }
+        
         imagePickerView.image = selectedImage
         setupTopBar(enabled: true)
         dismiss(animated: true, completion: nil)
@@ -155,7 +167,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     func save() {
         // Create the meme
         let meme = Meme(topText: topTextField.text!, bottomText: bottomTextField.text!, originalImage: imagePickerView.image!, memedImage: self.memmedImage)
-        UIImageWriteToSavedPhotosAlbum(meme.memedImage, self, #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)
+        
+        print("========> Calling Saving to save data to export later")
+        // UIImageWriteToSavedPhotosAlbum(meme.memedImage, self, #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)
     }
     
     func generateMemedImage() -> UIImage {
@@ -185,6 +199,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         let imagePickerController = UIImagePickerController()
         imagePickerController.sourceType = sourceType
         imagePickerController.delegate = self
+        imagePickerController.allowsEditing = true
+        if sourceType == .camera {
+            imagePickerController.showsCameraControls = true
+        }
         present(imagePickerController, animated: true, completion: nil)
     }
     
