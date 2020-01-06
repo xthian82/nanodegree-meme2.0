@@ -39,14 +39,14 @@
                                     </barButtonItem>
                                 </items>
                             </toolbar>
-                            <textField opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="TOP" textAlignment="center" adjustsFontForContentSizeCategory="YES" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="W5N-jF-Xf8">
+                            <textField opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="TOP" textAlignment="center" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="W5N-jF-Xf8">
                                 <rect key="frame" x="85" y="92" width="97" height="34"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="BOTTOM" textAlignment="center" adjustsFontForContentSizeCategory="YES" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="afV-vt-S8I">
+                            <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="BOTTOM" textAlignment="center" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="afV-vt-S8I">
                                 <rect key="frame" x="111" y="744" width="97" height="34"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -73,7 +73,7 @@
                         <constraints>
                             <constraint firstItem="Jlr-cJ-zcc" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="2T2-GW-xr9"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="5K3-OG-Gig" secondAttribute="trailing" id="3iT-AM-2zE"/>
-                            <constraint firstItem="W5N-jF-Xf8" firstAttribute="top" secondItem="8mV-L9-ePt" secondAttribute="top" constant="52" id="9HL-h6-NXA"/>
+                            <constraint firstItem="W5N-jF-Xf8" firstAttribute="top" secondItem="8mV-L9-ePt" secondAttribute="top" constant="62" id="9HL-h6-NXA"/>
                             <constraint firstItem="8mV-L9-ePt" firstAttribute="top" secondItem="5K3-OG-Gig" secondAttribute="top" id="A5D-mE-Tbx"/>
                             <constraint firstItem="afV-vt-S8I" firstAttribute="trailing" secondItem="8mV-L9-ePt" secondAttribute="trailing" constant="-16" id="Cc4-0Q-ViP"/>
                             <constraint firstItem="8mV-L9-ePt" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="LlN-fi-9rt"/>
@@ -83,7 +83,7 @@
                             <constraint firstItem="W5N-jF-Xf8" firstAttribute="trailing" secondItem="8mV-L9-ePt" secondAttribute="trailing" constant="-16" id="YVc-2z-X3n"/>
                             <constraint firstItem="afV-vt-S8I" firstAttribute="leading" secondItem="8mV-L9-ePt" secondAttribute="leading" constant="16" id="aw0-8L-Hk2"/>
                             <constraint firstItem="Jlr-cJ-zcc" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="jJI-Ff-Ndn"/>
-                            <constraint firstItem="afV-vt-S8I" firstAttribute="bottom" secondItem="8mV-L9-ePt" secondAttribute="bottom" constant="-52" id="jSQ-O5-eyp"/>
+                            <constraint firstItem="afV-vt-S8I" firstAttribute="bottom" secondItem="8mV-L9-ePt" secondAttribute="bottom" constant="-42" id="jSQ-O5-eyp"/>
                             <constraint firstItem="Jlr-cJ-zcc" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="tMN-ho-6oA"/>
                             <constraint firstItem="8mV-L9-ePt" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" constant="-32" id="uHm-1u-OPF"/>
                             <constraint firstItem="8mV-L9-ePt" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="znG-NY-22Y"/>
@@ -97,6 +97,7 @@
                         <outlet property="imagePickerView" destination="8mV-L9-ePt" id="jMq-ji-jdJ"/>
                         <outlet property="shareButton" destination="MYC-9C-bXg" id="mTk-Mc-8dS"/>
                         <outlet property="toolBarView" destination="Jlr-cJ-zcc" id="pJ2-X8-2V6"/>
+                        <outlet property="topBarView" destination="5K3-OG-Gig" id="bBl-0x-HKn"/>
                         <outlet property="topTextField" destination="W5N-jF-Xf8" id="Sga-cm-TYF"/>
                     </connections>
                 </viewController>

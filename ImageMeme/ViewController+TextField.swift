@@ -1,5 +1,5 @@
 //
-//  TextFieldDelegator.swift
+//  ViewController+TextField.swift
 //  ImageMeme
 //
 //  Created by Cristhian Recalde on 1/5/20.
@@ -9,24 +9,16 @@
 import Foundation
 import UIKit
 
-class TextFieldDelegator: NSObject, UITextFieldDelegate {
-    
-    var title: String
-    var moveUpKeyboard: Bool
-    
-    init(title: String, moveUpKeyboard: Bool = false) {
-        self.title = title
-        self.moveUpKeyboard = moveUpKeyboard
-    }
+extension ViewController: UITextFieldDelegate {
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         textField.text = ""
-        moveUpView = moveUpKeyboard ? 1 : 0
+        // we should move the frame only if the bottom textfield is selectd
+        shouldMoveUpView = textField.hash == bottomTextField.hash
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         setupInitialText(textField)
-        moveUpView = moveUpKeyboard ? 1 : 0
     }
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -37,7 +29,7 @@ class TextFieldDelegator: NSObject, UITextFieldDelegate {
     
     private func setupInitialText(_ textField: UITextField) {
         if textField.text?.count == 0 {
-            textField.text = title
+            textField.text = shouldMoveUpView ? ButtonTitle.BOTTOM.rawValue : ButtonTitle.TOP.rawValue
         }
     }
 }

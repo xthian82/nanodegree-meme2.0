@@ -8,8 +8,6 @@
 
 import UIKit
 
-var moveUpView = 0
-
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     //MARK: Properties
@@ -27,7 +25,11 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var cameraButton: UIBarButtonItem!
     @IBOutlet weak var shareButton: UIBarButtonItem!
     @IBOutlet weak var cancelShare: UIBarButtonItem!
+    @IBOutlet weak var topBarView: UIToolbar!
     
+    var shouldMoveUpView = false
+    var memmedImage: UIImage!
+
     let memeTextAttributes: [NSAttributedString.Key: Any] = [
         NSAttributedString.Key.strokeColor: UIColor.white,
         NSAttributedString.Key.foregroundColor: UIColor.white,
@@ -36,17 +38,13 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     ]
 
     // MARK: Delegates
-    let topDelegate = TextFieldDelegator(title: "TOP")
-    let bottomDelegate = TextFieldDelegator(title: "BOTTOM", moveUpKeyboard: true)
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
-
-        setUpTextField(topTextField!, delegate: topDelegate)
-        setUpTextField(bottomTextField!, delegate: bottomDelegate)
         setupTopBar(enabled: false)
+        topTextField.delegate = self
+        bottomTextField.delegate = self
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -67,43 +65,31 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     @IBAction func shareButtonPressed(){
-        let image = generateMemedImage()
-        let controller = UIActivityViewController(activityItems: [image], applicationActivities: nil)
-        //TODO: fix finish handler
-        // controller.completionWithItemsHandler = save
-
+        self.memmedImage = generateMemedImage()
+        let controller = UIActivityViewController(activityItems: [self.memmedImage!], applicationActivities: nil)
+        
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            // Ipad uses different controller
+            controller.popoverPresentationController?.sourceRect = CGRect(x: UIScreen.main.bounds.width / 2,
+                                                                          y: UIScreen.main.bounds.height / 2,
+                                                                          width: 0,
+                                                                          height: 0)
+            controller.popoverPresentationController?.sourceView = self.view
+            controller.popoverPresentationController?.permittedArrowDirections = UIPopoverArrowDirection(rawValue: 0)
+        }
         self.present(controller, animated: true, completion: nil)
     }
     
     @IBAction func cancelTopBarButton() {
-        bottomTextField.text = "BOTTOM"
-        topTextField.text = "TOP"
+        bottomTextField.text = ButtonTitle.BOTTOM.rawValue
+        topTextField.text = ButtonTitle.TOP.rawValue
         imagePickerView.image = nil
         shareButton.isEnabled = false
-    }
-    
-    //MARK: Library functions
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        dismiss(animated: true, completion: nil)
-    }
-
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        // info dictionary may contain multiple representations of the image. You want
-        // to use the original
-        guard let selectedImage = info[UIImagePickerController.InfoKey.originalImage] as?
-            UIImage else {
-                fatalError("Expected a dictionary containing an image, but was provided the following: \(info)")
-        }
-        imagePickerView.image = selectedImage
-        setupTopBar(enabled: true)
-        dismiss(animated: true, completion: nil)
     }
 
     //MARK: Notifications
     func subscribeToKeyboardNotifications() {
         // subscribe to textfield show
-        //NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillshow(_:)), name:
-        //UIResponder.keyboardWillShowNotification, object: "BOTTOM")
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillshow(_:)), name:
         UIResponder.keyboardWillShowNotification, object: nil)
@@ -111,22 +97,18 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         // subscribe to textfield hide
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name:
             UIResponder.keyboardWillHideNotification, object: nil)
-    
-        //NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillshow), name: NSNotification.Name(rawValue: moveUpView), object: nil)
-        //NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name(rawValue: moveDownView), object: nil)
     }
     
     func unsubscribeFromKeyboardNotification() {
         // unsubscribe to textfield show
-        //NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
         
         // unsubscribe to textfield hide
-        //NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
-        NotificationCenter.default.removeObserver(self)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     @objc func keyboardWillshow(_ notification: Notification) {
-        view.frame.origin.y = moveUpView == 1 ? -getKeyboardHeight(notification) : 0
+        view.frame.origin.y = shouldMoveUpView ? -getKeyboardHeight(notification) : 0
     }
     
     @objc func keyboardWillHide(_ notification: Notification) {
@@ -140,23 +122,54 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         return keyboardSize.cgRectValue.height
     }
     
+    //MARK: Image related functions
+     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+         dismiss(animated: true, completion: nil)
+     }
+     
+     @objc func image(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
+         if let error = error {
+             // we got back an error!
+             let ac = UIAlertController(title: "Save error", message: error.localizedDescription, preferredStyle: .alert)
+             ac.addAction(UIAlertAction(title: "OK", style: .default))
+             present(ac, animated: true)
+         } else {
+             let ac = UIAlertController(title: "Saved!", message: "Your altered image has been saved to your photos.", preferredStyle: .alert)
+             ac.addAction(UIAlertAction(title: "OK", style: .default))
+             present(ac, animated: true)
+        }
+    }
+
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        // info dictionary may contain multiple representations of the image. You want
+        // to use the original
+        guard let selectedImage = info[UIImagePickerController.InfoKey.originalImage] as?
+            UIImage else {
+             fatalError("Expected a dictionary containing an image, but was provided the following: \(info)")
+        }
+        imagePickerView.image = selectedImage
+        setupTopBar(enabled: true)
+        dismiss(animated: true, completion: nil)
+    }
+    
     func save() {
         // Create the meme
-        let meme = Meme(topText: topTextField.text!, bottomText: bottomTextField.text!, originalImage: imagePickerView.image!, memedImage: generateMemedImage())
+        let meme = Meme(topText: topTextField.text!, bottomText: bottomTextField.text!, originalImage: imagePickerView.image!, memedImage: self.memmedImage)
+        UIImageWriteToSavedPhotosAlbum(meme.memedImage, self, #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)
     }
     
     func generateMemedImage() -> UIImage {
-        // TODO: test Hide toolbar and navbar
-        toolBarView.isHidden = true
+        // to save memmed image we hide top bars
+        hideTopBars(isHidden: true)
         
         // Render view to an image
         UIGraphicsBeginImageContext(self.view.frame.size)
         view.drawHierarchy(in: self.view.frame, afterScreenUpdates: true)
         let memedImage:UIImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
-        
-        // TODO: test Show toolbar and navbar
-        toolBarView.isHidden = false
+
+        // after saving memmed image we show top bars again
+        hideTopBars(isHidden: false)
         
         return memedImage
     }
@@ -178,6 +191,11 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     private func setupTopBar(enabled: Bool) {
         shareButton.isEnabled = enabled
         cancelShare.isEnabled = enabled
+    }
+    
+    private func hideTopBars(isHidden: Bool) {
+        toolBarView.isHidden = isHidden
+        topBarView.isHidden = isHidden
     }
 }
 

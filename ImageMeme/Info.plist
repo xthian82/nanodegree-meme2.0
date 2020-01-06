@@ -64,5 +64,7 @@
 	<string>We need to take pics</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>We need to access pics</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>We need to save pics</string>
 </dict>
 </plist>
