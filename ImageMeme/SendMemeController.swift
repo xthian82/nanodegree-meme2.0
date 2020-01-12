@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  SendMemeController.swift
 //  ImageMeme
 //
 //  Created by Cristhian Recalde on 1/4/20.
@@ -8,16 +8,9 @@
 
 import UIKit
 
-class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class SendMemeController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     //MARK: Properties
-    /*struct Meme {
-        var topText: String
-        var bottomText: String
-        var originalImage: UIImage
-        var memedImage: UIImage
-    }*/
-    
     @IBOutlet weak var imagePickerView: UIImageView!
     @IBOutlet weak var topTextField: UITextField!
     @IBOutlet weak var bottomTextField: UITextField!
@@ -87,10 +80,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     @IBAction func cancelTopBarButton() {
-        bottomTextField.text = ButtonTitle.BOTTOM.rawValue
-        topTextField.text = ButtonTitle.TOP.rawValue
-        imagePickerView.image = nil
-        shareButton.isEnabled = false
+        navigateToParent()
     }
 
     //MARK: Notifications
@@ -155,8 +145,12 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         // Create the meme
         let meme = Meme(topText: topTextField.text!, bottomText: bottomTextField.text!, originalImage: imagePickerView.image!, memedImage: self.memmedImage)
         
-        // add to the memes array
-        (UIApplication.shared.delegate as! AppDelegate).memes.append(meme)
+        
+        // Add it to the memes array in the Application Delegate
+        let object = UIApplication.shared.delegate
+        let appDelegate = object as! AppDelegate
+        appDelegate.memes.append(meme)
+        navigateToParent()
     }
     
     func generateMemedImage() -> UIImage {
@@ -195,12 +189,17 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     private func setupTopBar(enabled: Bool) {
         shareButton.isEnabled = enabled
-        cancelShare.isEnabled = enabled
     }
     
     private func hideTopBars(isHidden: Bool) {
         toolBarView.isHidden = isHidden
         topBarView.isHidden = isHidden
+    }
+    
+    private func navigateToParent() {
+        if let navigationController = self.navigationController {
+            navigationController.popToRootViewController(animated: true)
+        }
     }
 }
 

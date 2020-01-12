@@ -1,5 +1,5 @@
 //
-//  ViewController+TextField.swift
+//  SendMemeController+TextField.swift
 //  ImageMeme
 //
 //  Created by Cristhian Recalde on 1/5/20.
@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-extension ViewController: UITextFieldDelegate {
+extension SendMemeController: UITextFieldDelegate {
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         textField.text = ""
