@@ -36,19 +36,12 @@ class SendMemesTableController: UITableViewController {
     }
        
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "MemeDetailCell")!
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MemeTableViewCell") as! MemeTableViewCell
         let memeDetail = self.memes[indexPath.row]
            
         // Set the name and image
-    
-        cell.textLabel?.text = "\(memeDetail.topText.prefix(25)) ... \(memeDetail.bottomText.prefix(25))"
-        cell.imageView?.image = memeDetail.memedImage
-           
-        // If the cell has a detail label, we will put the evil scheme in.
-        if let detailTextLabel = cell.detailTextLabel {
-            detailTextLabel.text = ""
-            //detailTextLabel.text = "\(memeDetail.topText.prefix(10)) ... \(memeDetail.bottomText.prefix(10))"
-        }
+        cell.descriptionLabel!.text = "\(memeDetail.topText.prefix(25)) ... \(memeDetail.bottomText.prefix(25))"
+        cell.memedImageView!.image = memeDetail.memedImage
            
         return cell
     }
