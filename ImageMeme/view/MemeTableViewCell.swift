@@ -10,6 +10,8 @@ import UIKit
 
 class MemeTableViewCell: UITableViewCell {
 
+    let kTableViewCellID = "MemeTableViewCell"
+    
     @IBOutlet weak var memedImageView: UIImageView!
     @IBOutlet weak var descriptionLabel: UILabel!
     

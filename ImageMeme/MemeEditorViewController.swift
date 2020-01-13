@@ -1,5 +1,5 @@
 //
-//  SendMemeController.swift
+//  MemeEditorViewController.swift
 //  ImageMeme
 //
 //  Created by Cristhian Recalde on 1/4/20.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SendMemeController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     //MARK: Properties
     @IBOutlet weak var imagePickerView: UIImageView!
@@ -23,9 +23,10 @@ class SendMemeController: UIViewController, UIImagePickerControllerDelegate, UIN
     var shouldMoveUpView = false
     var memmedImage: UIImage!
     let memeTextAttributes: [NSAttributedString.Key: Any] = [
-        NSAttributedString.Key.strokeColor: UIColor.white,
+        NSAttributedString.Key.strokeColor: UIColor.black,
         NSAttributedString.Key.foregroundColor: UIColor.white,
-        NSAttributedString.Key.strokeWidth:  0.0
+        NSAttributedString.Key.font: UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
+        NSAttributedString.Key.strokeWidth:  -2.0
     ]
     
     // MARK: Delegates
@@ -34,8 +35,8 @@ class SendMemeController: UIViewController, UIImagePickerControllerDelegate, UIN
 
         cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
         setupTopBar(enabled: false)
-        topTextField.delegate = self
-        bottomTextField.delegate = self
+        setUpTextField(topTextField, delegate: self)
+        setUpTextField(bottomTextField, delegate: self)
     }
 
     override func viewWillAppear(_ animated: Bool) {

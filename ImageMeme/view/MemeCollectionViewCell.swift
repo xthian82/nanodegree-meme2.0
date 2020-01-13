@@ -9,6 +9,9 @@
 import UIKit
 
 class MemeCollectionViewCell: UICollectionViewCell {
+    
+    let kCollectionViewCellID = "MemeCollectionViewCell"
+    
     @IBOutlet weak var imageViewDetail: UIImageView!
 
 }
