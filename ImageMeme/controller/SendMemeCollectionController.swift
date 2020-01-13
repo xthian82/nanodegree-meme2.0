@@ -35,18 +35,11 @@ class SendMemeCollectionController: UICollectionViewController {
         cell.imageViewDetail.image = memeDetail.memedImage
         return cell
     }
-
-    /* TODO:
+    
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath:IndexPath) {
+        let detailController = self.storyboard!.instantiateViewController(withIdentifier: "MemeDetailViewController") as! MemeDetailViewController
+        detailController.meme = self.memes[indexPath.row]
+        self.navigationController!.pushViewController(detailController, animated: true)
 
-        // Grab the DetailVC from Storyboard
-        let detailController = self.storyboard!.instantiateViewController(withIdentifier: "VillainDetailViewController") as! VillainDetailViewController
-
-        //Populate view controller with data from the selected item
-        detailController.villain = allVillains[(indexPath as NSIndexPath).row]
-
-        // Present the view controller using navigation
-        navigationController!.pushViewController(detailController, animated: true)
-
-    }*/
+    }
 }
